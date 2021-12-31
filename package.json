@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "dev": "nodemon dev",
-    "start": "nodemon dev"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -18,10 +18,6 @@
   "author": "Piyush",
   "license": "ISC",
   "type": "module",
-  "bugs": {
-    "url": "https://github.com/piyush999-o/amazon/issues"
-  },
-  "homepage": "https://github.com/piyush999-o/amazon#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
