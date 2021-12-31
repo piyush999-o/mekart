@@ -23,13 +23,13 @@ const upload = multer({ storage: storage });
 ConnectToMongo();
 
 // ROUTE:1 for Getting all products using GET - /product/
-router.get('/', async (req, res) => {
+router.get('/', async (req, res, next) => {
     const products = await Product.find()
     res.json(products)
 })
 
 // ROUTE:2 for Creating product using POST - /product/new
-router.post('/new', upload.single('productImage'), async (req, res) => {
+router.post('/new', upload.single('productImage'), async (req, res, next) => {
     const { title, description, category, price } = req.body;
     let { path } = req.file;
     path = path.replace("\\", "/")
@@ -42,14 +42,14 @@ router.post('/new', upload.single('productImage'), async (req, res) => {
 })
 
 // ROUTE:3 for Deleting product using DELETE - /product/delete/:id
-router.delete('/:_id', async (req, res) => {
+router.delete('/:_id', async (req, res, next) => {
     const productId = req.params._id
     const product = await Product.findByIdAndDelete(productId)
     res.json(`(${product}) deleted Successfully`)
 })
 
 // ROUTE:4 for Getting Particular Product information using GET - /product/:id
-router.get('/:_id', async (req, res) => {
+router.get('/:_id', async (req, res, next) => {
     const productId = req.params._id
     const product = await Product.findById(productId)
     res.json(product)
