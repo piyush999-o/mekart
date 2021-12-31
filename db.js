@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose')
 
 
 const ConnectToMongo = () => {
@@ -8,4 +8,4 @@ const ConnectToMongo = () => {
     })
 }
 
-export default ConnectToMongo;
+module.exports = ConnectToMongo;

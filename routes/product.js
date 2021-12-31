@@ -1,8 +1,8 @@
-import express from 'express';
-import ConnectToMongo from '../db.js';
-import Product from '../models/Product.js';
+const express = require('express');
+const ConnectToMongo = require('../db.js')
+const Product = require('../models/Product.js')
 const router = express.Router();
-import multer from 'multer';
+const multer = require('multer');
 
 // set Storage path of multer for image
 const storage = multer.diskStorage({
@@ -55,4 +55,4 @@ router.get('/:_id', async (req, res) => {
     res.json(product)
 })
 
-export default router;
+module.exports = router;
