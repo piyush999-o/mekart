@@ -11,6 +11,19 @@ router.get('/', async (req, res) => {
     const products = await Product.find()
     res.json(products)
 })
+// set Storage path of multer for image
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, './uploads')
+    },
+    filename: (req, file, cb) => {
+        const date = Date.now().toString();
+        const filename = date.replace(" ", "-");
+        cb(null, filename + file.originalname);
+    }
+});
+
+const upload = multer({ storage: storage });
 
 // ROUTE:2 for Creating product using POST - /product/new
 router.post('/new', upload.single('productImage'), async (req, res) => {
@@ -39,18 +52,5 @@ router.get('/:_id', async (req, res) => {
     res.json(product)
 })
 
-// set Storage path of multer for image
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, './uploads')
-    },
-    filename: (req, file, cb) => {
-        const date = Date.now().toString();
-        const filename = date.replace(" ", "-");
-        cb(null, filename + file.originalname);
-    }
-});
-
-const upload = multer({ storage: storage });
 
 module.exports = router;
