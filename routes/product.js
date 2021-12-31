@@ -4,14 +4,6 @@ const Product = require('../models/Product.js')
 const router = express.Router();
 const multer = require('multer');
 
-ConnectToMongo();
-
-// ROUTE:1 for Getting all products using GET - /product/
-router.get('/', async (req, res) => {
-    const products = await Product.find()
-    res.json(products)
-})
-
 // set Storage path of multer for image
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -25,6 +17,16 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
+
+
+// Connection with MongoDB
+ConnectToMongo();
+
+// ROUTE:1 for Getting all products using GET - /product/
+router.get('/', async (req, res) => {
+    const products = await Product.find()
+    res.json(products)
+})
 
 // ROUTE:2 for Creating product using POST - /product/new
 router.post('/new', upload.single('productImage'), async (req, res) => {
@@ -52,6 +54,5 @@ router.get('/:_id', async (req, res) => {
     const product = await Product.findById(productId)
     res.json(product)
 })
-
 
 module.exports = router;
