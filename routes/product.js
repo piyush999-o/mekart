@@ -11,6 +11,7 @@ router.get('/', async (req, res) => {
     const products = await Product.find()
     res.json(products)
 })
+
 // set Storage path of multer for image
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {

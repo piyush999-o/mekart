@@ -4,7 +4,7 @@
   "description": "This is a E-commerce Website Backend.",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon dev",
+    "dev": "nodemon app",
     "start": "node app.js"
   },
   "repository": {
