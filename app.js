@@ -7,7 +7,7 @@ const app = express();
 app.use('/api/product', productRouter);
 
 app.use((req, res, next) => {
-    res.json({message: "App is Running"})
+    res.json({message: "App is Running in Heroku"})
 })
 
 app.use(cors())
