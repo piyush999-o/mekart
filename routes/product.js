@@ -7,12 +7,11 @@ const multer = require('multer');
 // set Storage path of multer for image
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, '../frontend/public/uploads')
+        cb(null, './uploads')
     },
     filename: (req, file, cb) => {
         const date = Date.now().toString();
         let filename = date.replace(" ", "-");
-        filename = date.replace("../frontend\\public\\", "/");
         cb(null, filename + file.originalname);
     }
 });
@@ -34,7 +33,6 @@ router.post('/new', upload.single('productImage'), async (req, res, next) => {
     const { title, description, category, price } = req.body;
     let { path } = req.file;
     path = path.replace("\\", "/")
-    path = path.replace("../frontend\\public\\", "/")
     const product = new Product({
         title, description, category, price, productImage: path
     })
