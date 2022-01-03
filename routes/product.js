@@ -33,6 +33,7 @@ router.post('/new', upload.single('productImage'), async (req, res, next) => {
     const { title, description, category, price } = req.body;
     let { path } = req.file;
     path = path.replace("\\", "/")
+    path = path.replace("uploads/", "/")
     const product = new Product({
         title, description, category, price, productImage: path
     })
