@@ -10,8 +10,9 @@ app.use((req, res, next) => {
     res.json({message: "App is Running in Heroku"})
 })
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*")
-  })
+    res.header({"Access-Control-Allow-Origin": "*"});
+    next();
+  }) 
 
 app.use(cors())
 app.use(express.json());
