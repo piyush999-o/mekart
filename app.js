@@ -13,6 +13,10 @@ app.use((req, res, next) => {
     next();
 })
 
+app.get('/', (req, res) => {
+    res.json({"Message": "Server is Running"})
+})
+
 app.use(cors())
 app.use(express.json());
 app.use(express.static('uploads'));
