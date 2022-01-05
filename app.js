@@ -4,7 +4,7 @@ const cors = require('cors');
 
 const app = express();
 
-const port = process.env.PORT || 8000;
+// const port = process.env.PORT || 8000;
 
 app.use('/api/product', productRouter);
 
@@ -21,6 +21,8 @@ app.use(cors())
 app.use(express.json());
 app.use(express.static('uploads'));
 
-app.listen(port, () => {
-    console.log(`App Start Listening on port ${port}`)
-})
+// app.listen(port, () => {
+//     console.log(`App Start Listening on port ${port}`)
+// })
+
+module.exports = app;
