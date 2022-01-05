@@ -1,5 +1,5 @@
 const express = require('express');
-const productRouter = require('./product')
+const productRouter = require('./routes/product')
 const cors = require('cors');
 
 const app = express();
