@@ -1,6 +1,6 @@
 const express = require('express');
-const ConnectToMongo = require('../db.js')
-const Product = require('../models/Product.js')
+const ConnectToMongo = require('./db.js')
+const Product = require('./models/Product.js')
 const router = express.Router();
 const multer = require('multer');
 
